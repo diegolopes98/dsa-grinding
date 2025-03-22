@@ -1,6 +1,6 @@
 package com.diegolopes98.dsa.leetcode.Array.MergeSortedArray;
 
-public class MergeSortedArrayImpl implements MergeSortedArray{
+public class MergeSortedArrayImpl implements MergeSortedArray {
     @Override
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int i = m - 1;

@@ -3,7 +3,7 @@ package com.diegolopes98.dsa.leetcode.Array.TwoSum;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TwoSumHashMapOnePassImpl implements TwoSum{
+public class TwoSumHashMapOnePassImpl implements TwoSum {
 
     @Override
     public int[] twoSum(int[] nums, int target) {
@@ -14,12 +14,12 @@ public class TwoSumHashMapOnePassImpl implements TwoSum{
             int diff = target - num;
 
             if (comps.containsKey(diff)) {
-                return new int[] { comps.get(diff), i };
+                return new int[]{comps.get(diff), i};
             }
 
             comps.put(num, i);
         }
 
-        return new int[] { -1, -1 };
+        return new int[]{-1, -1};
     }
 }

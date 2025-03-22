@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TopKFrequentElementsNaiveImpl implements TopKFrequentElements{
+public class TopKFrequentElementsNaiveImpl implements TopKFrequentElements {
     @Override
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> frequencies = new HashMap<>();
@@ -16,7 +16,7 @@ public class TopKFrequentElementsNaiveImpl implements TopKFrequentElements{
 
         List<int[]> arr = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : frequencies.entrySet()) {
-            arr.add(new int[] {entry.getValue(), entry.getKey()});
+            arr.add(new int[]{entry.getValue(), entry.getKey()});
         }
         arr.sort((a, b) -> b[0] - a[0]);
 

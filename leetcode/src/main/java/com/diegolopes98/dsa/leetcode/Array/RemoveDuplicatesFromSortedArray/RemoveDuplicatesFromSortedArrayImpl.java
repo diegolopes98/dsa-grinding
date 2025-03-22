@@ -1,6 +1,6 @@
 package com.diegolopes98.dsa.leetcode.Array.RemoveDuplicatesFromSortedArray;
 
-public class RemoveDuplicatesFromSortedArrayImpl implements RemoveDuplicatesFromSortedArray{
+public class RemoveDuplicatesFromSortedArrayImpl implements RemoveDuplicatesFromSortedArray {
     @Override
     public int removeDuplicates(int[] nums) {
         int j = 1;

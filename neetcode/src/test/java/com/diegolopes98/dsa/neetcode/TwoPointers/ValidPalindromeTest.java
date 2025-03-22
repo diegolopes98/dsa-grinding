@@ -17,7 +17,7 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void givenAValidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue(){
+    void givenAValidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
         final var givenSupposedPalindrome = "Was it a car or a cat I saw?";
 
         final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
@@ -26,7 +26,7 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void givenAnInvalidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue(){
+    void givenAnInvalidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
         final var givenSupposedPalindrome = "tab a cat";
 
         final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
@@ -35,7 +35,7 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void givenAnEmptyPalindrome_whenCallingIsPalindrome_shouldReturnTrue(){
+    void givenAnEmptyPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
         final var givenSupposedPalindrome = "";
 
         final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
@@ -44,7 +44,7 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void givenASpaceStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue(){
+    void givenASpaceStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
         final var givenSupposedPalindrome = " ";
 
         final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
@@ -53,7 +53,7 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void givenASpecialCharsStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue(){
+    void givenASpecialCharsStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
         final var givenSupposedPalindrome = " !+-_!@#$%*()}{][";
 
         final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);

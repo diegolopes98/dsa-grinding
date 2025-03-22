@@ -33,9 +33,9 @@ class RemoveDuplicatesFromSortedArrayTest {
 
     @Test
     void givenValidArrayWith5DuplicateAnd10Elements_whenCallingRemoveDuplicates_shouldReturn2() {
-        final var givenNumbers = new int[]{0,0,1,1,1,2,2,3,3,4};
+        final var givenNumbers = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         final var expectedOutput = 5;
-        final var expectedNumbers = new int[]{0,1,2,3,4};
+        final var expectedNumbers = new int[]{0, 1, 2, 3, 4};
 
         final var actualOutput = solution.removeDuplicates(givenNumbers);
         final var actualNumbers = Arrays.copyOfRange(givenNumbers, 0, expectedOutput);

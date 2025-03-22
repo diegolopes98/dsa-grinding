@@ -18,7 +18,7 @@ class TopKFrequentElementsTest {
 
     @Test
     void givenValidArrayConsecutiveAndLimit2_whenCallingTopKFrequent_shouldReturnTheTopKValues() {
-        final var givenNums = new int[]{1,2,2,3,3,3};
+        final var givenNums = new int[]{1, 2, 2, 3, 3, 3};
         final var givenK = 2;
         final var expectedOutput = new int[]{3, 2};
 

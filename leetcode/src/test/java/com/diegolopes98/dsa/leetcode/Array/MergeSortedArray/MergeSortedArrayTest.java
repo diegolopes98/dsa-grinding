@@ -18,9 +18,9 @@ class MergeSortedArrayTest {
 
     @Test
     void givenValidInputs1_whenCallingMerge_shouldReturnArrayMerged() {
-        final var givenNums1 = new int[]{1,2,3,0,0,0};
+        final var givenNums1 = new int[]{1, 2, 3, 0, 0, 0};
         final var givenM = 3;
-        final var givenNums2 = new int[]{2,5,6};
+        final var givenNums2 = new int[]{2, 5, 6};
         final var givenN = 3;
         final var expectedOutput = new int[]{1, 2, 2, 3, 5, 6};
 

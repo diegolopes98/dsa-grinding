@@ -6,7 +6,7 @@ import java.util.Map;
 public class TwoSumImpl implements TwoSum {
 
     @Override
-    public int[] twoSum(int[] nums, int target){
+    public int[] twoSum(int[] nums, int target) {
         int[] indexes = {-1, -1};
 
         Map<Integer, Integer> comps = new HashMap<>();

@@ -27,7 +27,7 @@ public class ValidPalindromeImpl implements ValidPalindrome {
                 c >= '0' && c <= '9');
     }
 
-    private boolean isNotAlphaNum(char c){
+    private boolean isNotAlphaNum(char c) {
         return !isAlphaNum(c);
     }
 }

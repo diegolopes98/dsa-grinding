@@ -18,8 +18,8 @@ class PlusOneTest {
 
     @Test
     void givenValidArrayEndingNot9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1,2,3,4};
-        final var expectedOutput = new int[]{1,2,3,5};
+        final var givenDigits = new int[]{1, 2, 3, 4};
+        final var expectedOutput = new int[]{1, 2, 3, 5};
 
         final var actualOutput = solution.plusOne(givenDigits);
 
@@ -28,8 +28,8 @@ class PlusOneTest {
 
     @Test
     void givenValidArrayEnding9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1,2,3,4,9};
-        final var expectedOutput = new int[]{1,2,3,5,0};
+        final var givenDigits = new int[]{1, 2, 3, 4, 9};
+        final var expectedOutput = new int[]{1, 2, 3, 5, 0};
 
         final var actualOutput = solution.plusOne(givenDigits);
 
@@ -38,8 +38,8 @@ class PlusOneTest {
 
     @Test
     void givenValidArrayEnding99_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1,2,3,4,9,9};
-        final var expectedOutput = new int[]{1,2,3,5,0,0};
+        final var givenDigits = new int[]{1, 2, 3, 4, 9, 9};
+        final var expectedOutput = new int[]{1, 2, 3, 5, 0, 0};
 
         final var actualOutput = solution.plusOne(givenDigits);
 
@@ -49,7 +49,7 @@ class PlusOneTest {
     @Test
     void givenValidArrayWith9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
         final var givenDigits = new int[]{9};
-        final var expectedOutput = new int[]{1,0};
+        final var expectedOutput = new int[]{1, 0};
 
         final var actualOutput = solution.plusOne(givenDigits);
 

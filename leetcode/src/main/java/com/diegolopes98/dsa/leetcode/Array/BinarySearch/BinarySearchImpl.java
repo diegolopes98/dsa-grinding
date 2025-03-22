@@ -10,7 +10,7 @@ public class BinarySearchImpl<T extends Comparable<T>> implements BinarySearch<T
             final T curr = items[mid];
             final int compare = curr.compareTo(target);
 
-            if (compare == 0 ) {
+            if (compare == 0) {
                 return mid;
             }
 
