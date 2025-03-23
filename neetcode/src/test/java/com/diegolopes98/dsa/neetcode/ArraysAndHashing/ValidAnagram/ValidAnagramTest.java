@@ -46,7 +46,7 @@ public class ValidAnagramTest {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} => given {1}")
     @MethodSource("provideArguments")
     void givenParametrizedArguments_whenCallingImplementation_shouldReturnExpectedResult(
             ValidAnagram implementation,
