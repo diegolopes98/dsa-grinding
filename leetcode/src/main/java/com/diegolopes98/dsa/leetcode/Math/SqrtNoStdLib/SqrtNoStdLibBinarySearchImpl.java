@@ -2,7 +2,11 @@ package com.diegolopes98.dsa.leetcode.Math.SqrtNoStdLib;
 
 public class SqrtNoStdLibBinarySearchImpl implements SqrtNoStdLib {
     @Override
-    public int mySqrt(int x) {
+    public Integer execute(SqrtNoStdLibInput input) {
+        return mySqrt(input.x());
+    }
+
+    private int mySqrt(int x) {
         if (x < 0) return 0;
         if (x == 1 || x == 0) return x;
 
