@@ -1,10 +1,10 @@
 package com.diegolopes98.dsa.leetcode.Math.SqrtNoStdLib;
 
 import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.provider.Arguments;
 
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 class SqrtNoStdLibTest extends AlgorithmTest<SqrtNoStdLibInput, Integer> {
@@ -17,196 +17,103 @@ class SqrtNoStdLibTest extends AlgorithmTest<SqrtNoStdLibInput, Integer> {
                 Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(-1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                0,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(-1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                0,
-                                actualOutput
-                        )
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
                 ),
                 // 0 and 1
                 Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(0),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                0,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(0),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                0,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                1,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(1, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                1,
-                                actualOutput
-                        )
+                        TestAssertion.expectedOutputConsumer(1, Assertions::assertEquals)
                 ),
                 // Above numbers
                 Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(4),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                2,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(4),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                2,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(8),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                2,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(8),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                2,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(16),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                4,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(16),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                4,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(100),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                10,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(10, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(100),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                10,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(10, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(1000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                31,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(31, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(1000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                31,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(31, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(10000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                100,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(100, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(10000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                100,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(100, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(50000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                223,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(223, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(50000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                223,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(223, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(1000000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                1000,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(1000, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(1000000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                1000,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(1000, Assertions::assertEquals)
+                ), Arguments.of(
                         linearImplementation,
                         SqrtNoStdLibInput.with(2000000000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                44721,
-                                actualOutput
-                        )
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(44721, Assertions::assertEquals)
+                ), Arguments.of(
                         binarySearchImplementation,
                         SqrtNoStdLibInput.with(2000000000),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(
-                                44721,
-                                actualOutput
-                        )
+                        TestAssertion.expectedOutputConsumer(44721, Assertions::assertEquals)
                 )
         );
     }

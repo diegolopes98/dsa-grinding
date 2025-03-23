@@ -1,12 +1,12 @@
 package com.diegolopes98.dsa.leetcode.Array.SearchInsertPosition;
 
 import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.params.provider.Arguments;
 
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -18,42 +18,35 @@ class SearchInsertPositionTest extends AlgorithmTest<SearchInsertPositionInput, 
                 Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 4, 5, 6}, 4),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(2, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 4, 5, 6}, 1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(0, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 4, 5, 6}, 6),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(4, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 5, 6, 7}, 4),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(2, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{2, 3, 4, 5, 6}, 1),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(0, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 2, 3, 4, 5}, 6),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(5, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(5, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 5, 6}, 2),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(1, actualOutput)
-                ),
-                Arguments.of(
+                        TestAssertion.expectedOutputConsumer(1, Assertions::assertEquals)
+                ), Arguments.of(
                         implementation,
                         SearchInsertPositionInput.with(new int[]{1, 3, 5, 6}, 7),
-                        (Consumer<Integer>) actualOutput -> Assertions.assertEquals(4, actualOutput)
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
                 )
         );
     }
