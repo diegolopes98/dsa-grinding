@@ -2,7 +2,11 @@ package com.diegolopes98.dsa.leetcode.Array.SearchInsertPosition;
 
 public class SearchInsertPositionImpl implements SearchInsertPosition {
     @Override
-    public int searchInsert(int[] nums, int target) {
+    public Integer execute(SearchInsertPositionInput input) {
+        return searchInsert(input.nums(), input.target());
+    }
+
+    private int searchInsert(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
 
         while (left <= right) {
