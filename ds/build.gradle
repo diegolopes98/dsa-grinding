@@ -6,7 +6,7 @@ group = 'com.diegolopes98.dsa.ds'
 version = '1.0-SNAPSHOT'
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 21
+    options.release = 17
 }
 
 repositories {
