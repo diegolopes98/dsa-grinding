@@ -1,5 +1,6 @@
 package com.diegolopes98.dsa.leetcode.Array.PlusOne;
 
-public interface PlusOne {
-    int[] plusOne(int[] digits);
+import com.diegolopes98.dsa.ds.AlgorithmImplementation;
+
+public interface PlusOne extends AlgorithmImplementation<PlusOneInput, int[]> {
 }

@@ -2,7 +2,11 @@ package com.diegolopes98.dsa.leetcode.Array.PlusOne;
 
 public class PlusOneImpl implements PlusOne {
     @Override
-    public int[] plusOne(int[] digits) {
+    public int[] execute(PlusOneInput input) {
+        return plusOne(input.digits());
+    }
+
+    private int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
             if (digits[i] == 9) {
                 digits[i] = 0;

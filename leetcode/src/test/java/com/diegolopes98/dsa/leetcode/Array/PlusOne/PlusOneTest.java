@@ -1,78 +1,46 @@
 package com.diegolopes98.dsa.leetcode.Array.PlusOne;
 
+import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class PlusOneTest {
+class PlusOneTest extends AlgorithmTest<PlusOneInput, int[]> {
 
-    private PlusOne solution;
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new PlusOneImpl();
 
-    @BeforeAll
-    void setup() {
-        solution = new PlusOneImpl();
-    }
-
-    @Test
-    void givenValidArrayEndingNot9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1, 2, 3, 4};
-        final var expectedOutput = new int[]{1, 2, 3, 5};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenValidArrayEnding9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1, 2, 3, 4, 9};
-        final var expectedOutput = new int[]{1, 2, 3, 5, 0};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenValidArrayEnding99_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{1, 2, 3, 4, 9, 9};
-        final var expectedOutput = new int[]{1, 2, 3, 5, 0, 0};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenValidArrayWith9_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{9};
-        final var expectedOutput = new int[]{1, 0};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenValidArrayWith0_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{0};
-        final var expectedOutput = new int[]{1};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenEmptyArray_whenCallingPlusOne_shouldReturnArrayWithIndexChanged() {
-        final var givenDigits = new int[]{};
-        final var expectedOutput = new int[]{1};
-
-        final var actualOutput = solution.plusOne(givenDigits);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{1, 2, 3, 4}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 2, 3, 5}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{1, 2, 3, 4, 9}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 2, 3, 5, 0}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{1, 2, 3, 4, 9, 9}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 2, 3, 5, 0, 0}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{9}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 0}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{0}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        PlusOneInput.with(new int[]{}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1}, Assertions::assertArrayEquals)
+                )
+        );
     }
 }
