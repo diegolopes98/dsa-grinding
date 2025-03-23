@@ -8,7 +8,11 @@ import java.util.Map;
 
 public class GroupAnagramsImpl implements GroupAnagrams {
     @Override
-    public List<List<String>> groupAnagrams(String[] strs) {
+    public List<List<String>> execute(GroupAnagramsInput input) {
+        return groupAnagrams(input.strs());
+    }
+
+    private List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> res = new HashMap<>();
 
         for (String s : strs) {

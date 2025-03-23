@@ -1,7 +1,7 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.GroupAnagrams;
 
+import com.diegolopes98.dsa.ds.AlgorithmImplementation;
+
 import java.util.List;
 
-public interface GroupAnagrams {
-    List<List<String>> groupAnagrams(String[] strs);
-}
+public interface GroupAnagrams extends AlgorithmImplementation<GroupAnagramsInput, List<List<String>>> { }

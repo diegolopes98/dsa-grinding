@@ -1,50 +1,67 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.GroupAnagrams;
 
+import com.diegolopes98.dsa.neetcode.AlgorithmTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class GroupAnagramsTest {
+class GroupAnagramsTest extends AlgorithmTest<GroupAnagramsInput, List<List<String>>> {
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new GroupAnagramsImpl();
 
-    private GroupAnagrams solution;
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        GroupAnagramsInput.with(new String[]{"act", "pots", "tops", "cat", "stop", "hat"}),
+                        (Consumer<List<List<String>>>) actualOutput -> {
+                            final var expectedOutput = List.of(
+                                    List.of("act", "cat"),
+                                    List.of("pots", "tops", "stop"),
+                                    List.of("hat")
+                            );
 
-    @BeforeAll
-    void setup() {
-        solution = new GroupAnagramsImpl();
-    }
+                            Assertions.assertEquals(expectedOutput, actualOutput);
+                        }
+                 ),
+                Arguments.of(
+                        implementation,
+                        GroupAnagramsInput.with(new String[]{"x"}),
+                        (Consumer<List<List<String>>>) actualOutput -> {
+                            final var expectedOutput = List.of(
+                                    List.of("x")
+                            );
 
-    @Test
-    void givenMultipleAnagramsArray_whenCallingGroupAnagrams_shouldGroupThenProperly() {
-        final var givenAnagrams = new String[]{"act", "pots", "tops", "cat", "stop", "hat"};
-        final var expectedOutput = List.of(List.of("act", "cat"), List.of("pots", "tops", "stop"), List.of("hat"));
+                            Assertions.assertEquals(expectedOutput, actualOutput);
+                        }
+                ),
+                Arguments.of(
+                        implementation,
+                        GroupAnagramsInput.with(new String[]{""}),
+                        (Consumer<List<List<String>>>) actualOutput -> {
+                            final var expectedOutput = List.of(
+                                    List.of("")
+                            );
 
-        final var actualOutput = solution.groupAnagrams(givenAnagrams);
+                            Assertions.assertEquals(expectedOutput, actualOutput);
+                        }
+                ),
+                Arguments.of(
+                        implementation,
+                        GroupAnagramsInput.with(new String[]{}),
+                        (Consumer<List<List<String>>>) actualOutput -> {
+                            final var expectedOutput = List.of();
 
-        Assertions.assertEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenSingleAnagramsArray_whenCallingGroupAnagrams_shouldGroupThenProperly() {
-        final var givenAnagrams = new String[]{"x"};
-        final var expectedOutput = List.of(List.of("x"));
-
-        final var actualOutput = solution.groupAnagrams(givenAnagrams);
-
-        Assertions.assertEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenEmptyStringAnagramsArray_whenCallingGroupAnagrams_shouldGroupThenProperly() {
-        final var givenAnagrams = new String[]{""};
-        final var expectedOutput = List.of(List.of(""));
-
-        final var actualOutput = solution.groupAnagrams(givenAnagrams);
-
-        Assertions.assertEquals(expectedOutput, actualOutput);
+                            Assertions.assertEquals(expectedOutput, actualOutput);
+                        }
+                )
+        );
     }
 }
