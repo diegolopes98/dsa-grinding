@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.function.Consumer;
 
 public abstract class AlgorithmTest<IN, OUT> {
-    @ParameterizedTest(name = "{index} => given {1}")
+    @ParameterizedTest(name = "[{index}] given {1}")
     @MethodSource("provideArguments")
     void givenParametrizedArguments_whenCallingImplementation_shouldRunAssertions(
             AlgorithmImplementation<IN, OUT> implementation,
