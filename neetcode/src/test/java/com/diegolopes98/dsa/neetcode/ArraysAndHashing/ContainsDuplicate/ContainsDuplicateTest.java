@@ -1,63 +1,51 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.ContainsDuplicate;
 
+import com.diegolopes98.dsa.neetcode.AlgorithmTest;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class ContainsDuplicateTest {
+public class ContainsDuplicateTest extends AlgorithmTest<ContainsDuplicateInput, Boolean> {
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new ContainsDuplicateImpl();
 
-    private ContainsDuplicate solution;
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{0, 1, 2, 2}),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{0, 0, 1, 2}),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{0, 1, 1, 2}),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{-1, 0, 1, 2, -1}),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{0, 1, 2}),
+                        (Consumer<Boolean>) Assertions::assertFalse
+                ),
 
-    @BeforeAll
-    public void setup() {
-        solution = new ContainsDuplicateImpl();
-    }
-
-    @Test
-    public void givenDuplicateNeighboursAtEnd_whenCallHasDuplicate_shouldReturnTrue() {
-        final var givenNumbers = new int[]{0, 1, 2, 2};
-
-        final var result = solution.hasDuplicate(givenNumbers);
-
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void givenDuplicateNeighboursAtBegin_whenCallHasDuplicate_shouldReturnTrue() {
-        final var givenNumbers = new int[]{0, 0, 1, 2};
-
-        final var result = solution.hasDuplicate(givenNumbers);
-
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void givenDuplicateNeighboursAtMiddle_whenCallHasDuplicate_shouldReturnTrue() {
-        final var givenNumbers = new int[]{0, 1, 1, 2};
-
-        final var result = solution.hasDuplicate(givenNumbers);
-
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void givenDuplicateAtBeginAndEnd_whenCallHasDuplicate_shouldReturnTrue() {
-        final var givenNumbers = new int[]{-1, 0, 1, 2, -1};
-
-        final var result = solution.hasDuplicate(givenNumbers);
-
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void givenNoDuplicates_whenCallHasDuplicate_shouldReturnFalse() {
-        final var givenNumbers = new int[]{0, 1, 2};
-
-        final var result = solution.hasDuplicate(givenNumbers);
-
-        Assertions.assertFalse(result);
+                Arguments.of(
+                        implementation,
+                        ContainsDuplicateInput.with(new int[]{}),
+                        (Consumer<Boolean>) Assertions::assertFalse
+                )
+        );
     }
 }

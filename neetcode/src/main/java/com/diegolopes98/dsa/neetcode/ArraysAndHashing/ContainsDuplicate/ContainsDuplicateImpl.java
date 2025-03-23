@@ -6,7 +6,11 @@ import java.util.Set;
 public class ContainsDuplicateImpl implements ContainsDuplicate {
 
     @Override
-    public boolean hasDuplicate(int[] nums) {
+    public Boolean execute(ContainsDuplicateInput input) {
+        return hasDuplicate(input.nums());
+    }
+
+    private boolean hasDuplicate(int[] nums) {
         Set<Integer> seen = new HashSet<>();
 
         for (int num : nums) {
