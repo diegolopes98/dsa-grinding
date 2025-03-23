@@ -6,7 +6,11 @@ import java.util.Map;
 public class TwoSumHashMapOnePassImpl implements TwoSum {
 
     @Override
-    public int[] twoSum(int[] nums, int target) {
+    public int[] execute(TwoSumInput input) {
+        return twoSum(input.nums(), input.target());
+    }
+
+    private int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> comps = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
