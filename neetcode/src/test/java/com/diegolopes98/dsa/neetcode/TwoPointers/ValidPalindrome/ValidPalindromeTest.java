@@ -1,4 +1,4 @@
-package com.diegolopes98.dsa.neetcode.TwoPointers;
+package com.diegolopes98.dsa.neetcode.TwoPointers.ValidPalindrome;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

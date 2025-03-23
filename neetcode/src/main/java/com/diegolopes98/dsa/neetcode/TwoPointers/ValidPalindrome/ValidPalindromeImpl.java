@@ -1,4 +1,4 @@
-package com.diegolopes98.dsa.neetcode.TwoPointers;
+package com.diegolopes98.dsa.neetcode.TwoPointers.ValidPalindrome;
 
 public class ValidPalindromeImpl implements ValidPalindrome {
     @Override
