@@ -6,7 +6,7 @@ public class ValidPalindromeImpl implements ValidPalindrome {
         return isPalindrome(input.s());
     }
 
-    public boolean isPalindrome(String s) {
+    private boolean isPalindrome(String s) {
         char[] chars = s.toCharArray();
         var i = 0;
         var j = s.length() - 1;

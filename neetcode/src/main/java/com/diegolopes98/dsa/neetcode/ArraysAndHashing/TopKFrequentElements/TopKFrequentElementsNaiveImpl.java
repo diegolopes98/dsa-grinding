@@ -7,7 +7,11 @@ import java.util.Map;
 
 public class TopKFrequentElementsNaiveImpl implements TopKFrequentElements {
     @Override
-    public int[] topKFrequent(int[] nums, int k) {
+    public int[] execute(TopKFrequentElementsInput input) {
+        return topKFrequent(input.nums(), input.k());
+    }
+
+    private int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> frequencies = new HashMap<>();
 
         for (int num : nums) {
