@@ -1,5 +1,5 @@
 package com.diegolopes98.dsa.neetcode.TwoPointers.ValidPalindrome;
 
-public interface ValidPalindrome {
-    boolean isPalindrome(String s);
-}
+import com.diegolopes98.dsa.ds.AlgorithmImplementation;
+
+public interface ValidPalindrome extends AlgorithmImplementation<ValidPalindromeInput, Boolean> { }

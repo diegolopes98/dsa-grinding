@@ -1,63 +1,45 @@
 package com.diegolopes98.dsa.neetcode.TwoPointers.ValidPalindrome;
 
+import com.diegolopes98.dsa.neetcode.AlgorithmTest;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class ValidPalindromeTest {
+class ValidPalindromeTest extends AlgorithmTest<ValidPalindromeInput, Boolean> {
 
-    private ValidPalindrome solution;
-
-    @BeforeAll
-    void setup() {
-        solution = new ValidPalindromeImpl();
-    }
-
-    @Test
-    void givenAValidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
-        final var givenSupposedPalindrome = "Was it a car or a cat I saw?";
-
-        final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
-
-        Assertions.assertTrue(actualOutput);
-    }
-
-    @Test
-    void givenAnInvalidAlphaNumPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
-        final var givenSupposedPalindrome = "tab a cat";
-
-        final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
-
-        Assertions.assertFalse(actualOutput);
-    }
-
-    @Test
-    void givenAnEmptyPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
-        final var givenSupposedPalindrome = "";
-
-        final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
-
-        Assertions.assertTrue(actualOutput);
-    }
-
-    @Test
-    void givenASpaceStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
-        final var givenSupposedPalindrome = " ";
-
-        final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
-
-        Assertions.assertTrue(actualOutput);
-    }
-
-    @Test
-    void givenASpecialCharsStringPalindrome_whenCallingIsPalindrome_shouldReturnTrue() {
-        final var givenSupposedPalindrome = " !+-_!@#$%*()}{][";
-
-        final var actualOutput = solution.isPalindrome(givenSupposedPalindrome);
-
-        Assertions.assertTrue(actualOutput);
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new ValidPalindromeImpl();
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        ValidPalindromeInput.with("Was it a car or a cat I saw?"),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidPalindromeInput.with("tab a cat"),
+                        (Consumer<Boolean>) Assertions::assertFalse
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidPalindromeInput.with(""),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidPalindromeInput.with(" "),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidPalindromeInput.with(" !+-_!@#$%*()}{]["),
+                        (Consumer<Boolean>) Assertions::assertTrue
+                )
+        );
     }
 }

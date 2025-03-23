@@ -2,6 +2,10 @@ package com.diegolopes98.dsa.neetcode.TwoPointers.ValidPalindrome;
 
 public class ValidPalindromeImpl implements ValidPalindrome {
     @Override
+    public Boolean execute(ValidPalindromeInput input) {
+        return isPalindrome(input.s());
+    }
+
     public boolean isPalindrome(String s) {
         char[] chars = s.toCharArray();
         var i = 0;
