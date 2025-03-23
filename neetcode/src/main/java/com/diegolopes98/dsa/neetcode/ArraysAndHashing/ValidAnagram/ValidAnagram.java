@@ -1,5 +1,5 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.ValidAnagram;
 
-public interface ValidAnagram {
-    boolean isAnagram(String s, String t);
-}
+import com.diegolopes98.dsa.ds.AlgorithmImplementation;
+
+public interface ValidAnagram extends AlgorithmImplementation<ValidAnagramInput, Boolean> {}

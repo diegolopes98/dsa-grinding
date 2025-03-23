@@ -7,7 +7,11 @@ import java.util.Objects;
 public class ValidAnagramImpl implements ValidAnagram {
 
     @Override
-    public boolean isAnagram(String s, String t) {
+    public Boolean execute(ValidAnagramInput input) {
+        return isAnagram(input.s(), input.t());
+    }
+
+    private boolean isAnagram(String s, String t) {
         Objects.requireNonNull(s, "Param 's' of isAnagram must be non null");
         Objects.requireNonNull(t, "Param 't' of isAnagram must be non null");
 

@@ -1,58 +1,59 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.ValidAnagram;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class ValidAnagramTest {
 
-    private ValidAnagram solution;
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new ValidAnagramImpl();
 
-    @BeforeAll
-    void setup() {
-        solution = new ValidAnagramImpl();
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        ValidAnagramInput.with("sword", "words"),
+                        (Consumer<BooleanSupplier>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidAnagramInput.with("abcde", "edcba"),
+                        (Consumer<BooleanSupplier>) Assertions::assertTrue
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidAnagramInput.with("1234", "123A"),
+                        (Consumer<BooleanSupplier>) Assertions::assertFalse
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidAnagramInput.with("1234", "12345"),
+                        (Consumer<BooleanSupplier>) Assertions::assertFalse
+                ),
+                Arguments.of(
+                        implementation,
+                        ValidAnagramInput.with("hello", "world"),
+                        (Consumer<BooleanSupplier>) Assertions::assertFalse
+                )
+        );
     }
 
-    @Test
-    public void givenTwoValidAnagramsWords_whenCallingIsAnagram_shouldReturnTrue() {
-        final var givenS = "sword";
-        final var givenT = "words";
+    @ParameterizedTest
+    @MethodSource("provideArguments")
+    void givenParametrizedArguments_whenCallingImplementation_shouldReturnExpectedResult(
+            ValidAnagram implementation,
+            ValidAnagramInput givenInput,
+            Consumer<BooleanSupplier> assertion
 
-        final var actualOutput = solution.isAnagram(givenS, givenT);
-
-        Assertions.assertTrue(actualOutput);
-    }
-
-    @Test
-    public void givenTwoValidAnagramsSequenceOfLetters_whenCallingIsAnagram_shouldReturnTrue() {
-        final var givenS = "abcde";
-        final var givenT = "edcba";
-
-        final var actualOutput = solution.isAnagram(givenS, givenT);
-
-        Assertions.assertTrue(actualOutput);
-    }
-
-    @Test
-    public void givenTwoInValidAnagramsWithSameSize_whenCallingIsAnagram_shouldReturnFalse() {
-        final var givenS = "1234";
-        final var givenT = "123A";
-
-        final var actualOutput = solution.isAnagram(givenS, givenT);
-
-        Assertions.assertFalse(actualOutput);
-    }
-
-    @Test
-    public void givenTwoInValidAnagramsWithDiffSize_whenCallingIsAnagram_shouldReturnFalse() {
-        final var givenS = "1234";
-        final var givenT = "12345";
-
-        final var actualOutput = solution.isAnagram(givenS, givenT);
-
-        Assertions.assertFalse(actualOutput);
+    ) {
+        assertion.accept(() -> implementation.execute(givenInput));
     }
 }
