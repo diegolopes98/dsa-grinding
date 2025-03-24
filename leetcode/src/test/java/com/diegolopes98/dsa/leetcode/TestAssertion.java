@@ -9,6 +9,10 @@ public interface TestAssertion<IN, OUT> {
         return (input, output) -> consumer.accept(output);
     }
 
+    static <IN> TestAssertion<IN, Object> inputConsumer(Consumer<IN> consumer) {
+        return (input, output) -> consumer.accept(input);
+    }
+
     static <OUT> TestAssertion<Object, OUT> expectedOutputConsumer(OUT expected, BiConsumer<OUT, OUT> consumer) {
         return (input, output) -> consumer.accept(expected, output);
     }

@@ -1,58 +1,43 @@
 package com.diegolopes98.dsa.leetcode.Array.MergeSortedArray;
 
+import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class MergeSortedArrayTest {
+class MergeSortedArrayTest extends AlgorithmTest<MergeSortedArrayInput, Void> {
 
-    private MergeSortedArray solution;
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new MergeSortedArrayImpl();
 
-    @BeforeAll
-    void setup() {
-        solution = new MergeSortedArrayImpl();
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        MergeSortedArrayInput.with(new int[]{1, 2, 3, 0, 0, 0}, 3, new int[]{2, 5, 6}, 3),
+                        TestAssertion.<MergeSortedArrayInput>inputConsumer(givenInput -> {
+                            final var expectedOutput = new int[]{1, 2, 2, 3, 5, 6};
+                            Assertions.assertArrayEquals(expectedOutput, givenInput.nums1());
+                        })
+                ), Arguments.of(
+                        implementation,
+                        MergeSortedArrayInput.with(new int[]{1}, 0, new int[]{}, 0),
+                        TestAssertion.<MergeSortedArrayInput>inputConsumer(givenInput -> {
+                            final var expectedOutput = new int[]{1};
+                            Assertions.assertArrayEquals(expectedOutput, givenInput.nums1());
+                        })
+                ), Arguments.of(
+                        implementation,
+                        MergeSortedArrayInput.with(new int[]{0}, 0, new int[]{1}, 1),
+                        TestAssertion.<MergeSortedArrayInput>inputConsumer(givenInput -> {
+                            final var expectedOutput = new int[]{1};
+                            Assertions.assertArrayEquals(expectedOutput, givenInput.nums1());
+                        })
+                )
+        );
     }
-
-    @Test
-    void givenValidInputs1_whenCallingMerge_shouldReturnArrayMerged() {
-        final var givenNums1 = new int[]{1, 2, 3, 0, 0, 0};
-        final var givenM = 3;
-        final var givenNums2 = new int[]{2, 5, 6};
-        final var givenN = 3;
-        final var expectedOutput = new int[]{1, 2, 2, 3, 5, 6};
-
-        solution.merge(givenNums1, givenM, givenNums2, givenN);
-
-        Assertions.assertArrayEquals(expectedOutput, givenNums1);
-    }
-
-    @Test
-    void givenValidInputs2_whenCallingMerge_shouldReturnArrayMerged() {
-        final var givenNums1 = new int[]{1};
-        final var givenM = 1;
-        final var givenNums2 = new int[]{};
-        final var givenN = 0;
-        final var expectedOutput = new int[]{1};
-
-        solution.merge(givenNums1, givenM, givenNums2, givenN);
-
-        Assertions.assertArrayEquals(expectedOutput, givenNums1);
-    }
-
-    @Test
-    void givenValidInputs3_whenCallingMerge_shouldReturnArrayMerged() {
-        final var givenNums1 = new int[]{0};
-        final var givenM = 0;
-        final var givenNums2 = new int[]{1};
-        final var givenN = 1;
-        final var expectedOutput = new int[]{1};
-
-        solution.merge(givenNums1, givenM, givenNums2, givenN);
-
-        Assertions.assertArrayEquals(expectedOutput, givenNums1);
-    }
-
 }

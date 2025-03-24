@@ -2,7 +2,12 @@ package com.diegolopes98.dsa.leetcode.Array.MergeSortedArray;
 
 public class MergeSortedArrayImpl implements MergeSortedArray {
     @Override
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    public Void execute(MergeSortedArrayInput input) {
+        merge(input.nums1(), input.m(), input.nums2(), input.n());
+        return null;
+    }
+
+    private void merge(int[] nums1, int m, int[] nums2, int n) {
         int i = m - 1;
         int j = n - 1;
         int k = m + n - 1;
