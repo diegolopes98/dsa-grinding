@@ -1,48 +1,34 @@
 package com.diegolopes98.dsa.leetcode.Array.ConcatenationOfArray;
 
+import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.stream.Stream;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class ConcatenationOfArrayTest {
+class ConcatenationOfArrayTest extends AlgorithmTest<ConcatenationOfArrayInput, int[]> {
 
-    private ConcatenationOfArray solution;
+    static Stream<Arguments> provideArguments() {
+        final var implementation = new ConcatenationOfArrayImpl();
 
-    @BeforeAll
-    void setup() {
-        solution = new ConcatenationOfArrayImpl();
-    }
-
-    @Test
-    void givenPopulatedArray_whenCallingGetConcatenation_shouldReturnArrayConcatenated() {
-        final var givenNums = new int[]{1, 2, 3};
-        final var expectedOutput = new int[]{1, 2, 3, 1, 2, 3};
-
-        final var actualOutput = solution.getConcatenation(givenNums);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenSingleValueArray_whenCallingGetConcatenation_shouldReturnArrayConcatenated() {
-        final var givenNums = new int[]{1};
-        final var expectedOutput = new int[]{1, 1};
-
-        final var actualOutput = solution.getConcatenation(givenNums);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
-    }
-
-    @Test
-    void givenEmptyArray_whenCallingGetConcatenation_shouldReturnArrayConcatenated() {
-        final var givenNums = new int[]{};
-        final var expectedOutput = new int[]{};
-
-        final var actualOutput = solution.getConcatenation(givenNums);
-
-        Assertions.assertArrayEquals(expectedOutput, actualOutput);
+        return Stream.of(
+                Arguments.of(
+                        implementation,
+                        ConcatenationOfArrayInput.with(new int[]{1, 2, 3}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 2, 3, 1, 2, 3}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        ConcatenationOfArrayInput.with(new int[]{1}),
+                        TestAssertion.expectedOutputConsumer(new int[]{1, 1}, Assertions::assertArrayEquals)
+                ), Arguments.of(
+                        implementation,
+                        ConcatenationOfArrayInput.with(new int[]{}),
+                        TestAssertion.expectedOutputConsumer(new int[]{}, Assertions::assertArrayEquals)
+                )
+        );
     }
 }
