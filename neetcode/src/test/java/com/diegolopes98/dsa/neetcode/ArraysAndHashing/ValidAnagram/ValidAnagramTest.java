@@ -1,11 +1,11 @@
 package com.diegolopes98.dsa.neetcode.ArraysAndHashing.ValidAnagram;
 
 import com.diegolopes98.dsa.neetcode.AlgorithmTest;
+import com.diegolopes98.dsa.neetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.provider.Arguments;
 
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -17,27 +17,23 @@ public class ValidAnagramTest extends AlgorithmTest<ValidAnagramInput, Boolean> 
                 Arguments.of(
                         implementation,
                         ValidAnagramInput.with("sword", "words"),
-                        (Consumer<Boolean>) Assertions::assertTrue
-                ),
-                Arguments.of(
+                        TestAssertion.<Boolean>outputConsumer(Assertions::assertTrue)
+                ), Arguments.of(
                         implementation,
                         ValidAnagramInput.with("abcde", "edcba"),
-                        (Consumer<Boolean>) Assertions::assertTrue
-                ),
-                Arguments.of(
+                        TestAssertion.<Boolean>outputConsumer(Assertions::assertTrue)
+                ), Arguments.of(
                         implementation,
                         ValidAnagramInput.with("1234", "123A"),
-                        (Consumer<Boolean>) Assertions::assertFalse
-                ),
-                Arguments.of(
+                        TestAssertion.<Boolean>outputConsumer(Assertions::assertFalse)
+                ), Arguments.of(
                         implementation,
                         ValidAnagramInput.with("1234", "12345"),
-                        (Consumer<Boolean>) Assertions::assertFalse
-                ),
-                Arguments.of(
+                        TestAssertion.<Boolean>outputConsumer(Assertions::assertFalse)
+                ), Arguments.of(
                         implementation,
                         ValidAnagramInput.with("hello", "world"),
-                        (Consumer<Boolean>) Assertions::assertFalse
+                        TestAssertion.<Boolean>outputConsumer(Assertions::assertFalse)
                 )
         );
     }
