@@ -1,13 +1,13 @@
 package com.diegolopes98.dsa.leetcode.Array.BinarySearch;
 
+import com.diegolopes98.dsa.leetcode.AlgorithmTest;
+import com.diegolopes98.dsa.leetcode.TestAssertion;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class BinarySearchTest {
+class BinarySearchTest<T extends Comparable<T>> extends AlgorithmTest<BinarySearchInput<T>, Integer> {
 
     static Stream<Arguments> provideArguments() {
         final var integerImplementation = new BinarySearchImpl<Integer>();
@@ -16,49 +16,160 @@ class BinarySearchTest {
 
         return Stream.of(
                 // Integer
-                Arguments.of(integerImplementation, new Integer[]{-1, 0, 1, 3, 5, 7}, -1, 0),
-                Arguments.of(integerImplementation, new Integer[]{-1, 0, 1, 3, 5, 7}, 7, 5),
-                Arguments.of(integerImplementation, new Integer[]{-1, 0, 1, 3, 5, 7}, 0, 1),
-                Arguments.of(integerImplementation, new Integer[]{-1, 0, 1, 3, 5, 7}, 5, 4),
-                Arguments.of(integerImplementation, new Integer[]{1, 3, 5, 7}, 5, 2),
-                Arguments.of(integerImplementation, new Integer[]{1, 3, 5, 7}, 0, -1),
-                Arguments.of(integerImplementation, new Integer[]{0, 2}, 3, -1),
-                Arguments.of(integerImplementation, new Integer[]{0}, 2, -1),
-                Arguments.of(integerImplementation, new Integer[]{0}, -1, -1),
-                Arguments.of(integerImplementation, new Integer[]{}, 1, -1),
+                Arguments.of(
+                        integerImplementation,
+                        BinarySearchInput.with(new Integer[]{-1, 0, 1, 3, 5, 7}, -1),
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        integerImplementation,
+                        BinarySearchInput.with(new Integer[]{-1, 0, 1, 3, 5, 7}, 7),
+                        TestAssertion.expectedOutputConsumer(5, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        integerImplementation,
+                        BinarySearchInput.with(new Integer[]{-1, 0, 1, 3, 5, 7}, 0),
+                        TestAssertion.expectedOutputConsumer(1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        integerImplementation,
+                        BinarySearchInput.with(new Integer[]{-1, 0, 1, 3, 5, 7}, 5),
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{1, 3, 5, 7}, 5),
+                             TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{1, 3, 5, 7}, 0),
+                             TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{0, 2}, 3),
+                             TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{0}, 2),
+                             TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{0}, -1),
+                             TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(integerImplementation,
+                             BinarySearchInput.with(new Integer[]{}, 1),
+                             TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
                 // Double
-                Arguments.of(doubleImplementation, new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, -1.5, 0),
-                Arguments.of(doubleImplementation, new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 7.8, 5),
-                Arguments.of(doubleImplementation, new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 0.0, 1),
-                Arguments.of(doubleImplementation, new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 5.6, 4),
-                Arguments.of(doubleImplementation, new Double[]{1.1, 3.3, 5.5, 7.7}, 5.5, 2),
-                Arguments.of(doubleImplementation, new Double[]{1.1, 3.3, 5.5, 7.7}, 0.0, -1),
-                Arguments.of(doubleImplementation, new Double[]{0.0, 2.2}, 3.3, -1),
-                Arguments.of(doubleImplementation, new Double[]{0.0}, 2.2, -1),
-                Arguments.of(doubleImplementation, new Double[]{0.0}, -1.1, -1),
-                Arguments.of(doubleImplementation, new Double[]{}, 1.1, -1),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, -1.5),
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 7.8),
+                        TestAssertion.expectedOutputConsumer(5, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 0.0),
+                        TestAssertion.expectedOutputConsumer(1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{-1.5, 0.0, 1.2, 3.4, 5.6, 7.8}, 5.6),
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{1.1, 3.3, 5.5, 7.7}, 5.5),
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{1.1, 3.3, 5.5, 7.7}, 0.0),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{0.0, 2.2}, 3.3),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{0.0}, 2.2),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{0.0}, -1.1),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        doubleImplementation,
+                        BinarySearchInput.with(new Double[]{}, 1.1),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
                 // String
-                Arguments.of(stringImplementation, new String[]{"apple", "banana", "cherry", "date", "fig", "grape"}, "apple", 0),
-                Arguments.of(stringImplementation, new String[]{"apple", "banana", "cherry", "date", "fig", "grape"}, "grape", 5),
-                Arguments.of(stringImplementation, new String[]{"apple", "banana", "cherry", "date", "fig", "grape"}, "cherry", 2),
-                Arguments.of(stringImplementation, new String[]{"apple", "banana", "cherry", "date", "fig", "grape"}, "fig", 4),
-                Arguments.of(stringImplementation, new String[]{"alpha", "beta", "delta", "gamma"}, "delta", 2),
-                Arguments.of(stringImplementation, new String[]{"alpha", "beta", "delta", "gamma"}, "omega", -1),
-                Arguments.of(stringImplementation, new String[]{"cat", "dog"}, "elephant", -1),
-                Arguments.of(stringImplementation, new String[]{"lion"}, "zebra", -1),
-                Arguments.of(stringImplementation, new String[]{"lion"}, "ant", -1),
-                Arguments.of(stringImplementation, new String[]{}, "anything", -1)
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"apple", "banana", "cherry", "date", "fig", "grape"},
+                                               "apple"
+                        ),
+                        TestAssertion.expectedOutputConsumer(0, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"apple", "banana", "cherry", "date", "fig", "grape"},
+                                               "grape"
+                        ),
+                        TestAssertion.expectedOutputConsumer(5, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"apple", "banana", "cherry", "date", "fig", "grape"},
+                                               "cherry"
+                        ),
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"apple", "banana", "cherry", "date", "fig", "grape"},
+                                               "fig"
+                        ),
+                        TestAssertion.expectedOutputConsumer(4, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"alpha", "beta", "delta", "gamma"}, "delta"),
+                        TestAssertion.expectedOutputConsumer(2, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"alpha", "beta", "delta", "gamma"}, "omega"),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"cat", "dog"}, "elephant"),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"lion"}, "zebra"),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{"lion"}, "ant"),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                ),
+                Arguments.of(
+                        stringImplementation,
+                        BinarySearchInput.with(new String[]{}, "anything"),
+                        TestAssertion.expectedOutputConsumer(-1, Assertions::assertEquals)
+                )
         );
-    }
-
-    @ParameterizedTest
-    @MethodSource("provideArguments")
-    <T extends Comparable<T>> void givenParametrizedArguments_whenCallingImplementation_shouldReturnExpectedResult(
-            BinarySearch<T> implementation,
-            T[] items,
-            T target,
-            Integer expected
-    ) {
-        Assertions.assertEquals(expected, implementation.search(items, target));
     }
 }
