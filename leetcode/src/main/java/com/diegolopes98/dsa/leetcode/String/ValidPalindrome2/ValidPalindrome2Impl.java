@@ -12,13 +12,11 @@ public class ValidPalindrome2Impl implements ValidPalindrome2 {
 
     private boolean isPalindrome(String s, int i, int j, boolean deleted) {
         while (i < j) {
-            if (
-                    Character.toLowerCase(s.charAt(i))
-                            != Character.toLowerCase(s.charAt(j))
-            ) {
+            if (s.charAt(i) != s.charAt(j)) {
                 if (deleted) return false;
 
-                return isPalindrome(s, i + 1, j, true) || isPalindrome(s, i, j - 1, true);
+                return isPalindrome(s, i + 1, j, true) || 
+                        isPalindrome(s, i, j - 1, true);
             }
             i++;
             j--;
