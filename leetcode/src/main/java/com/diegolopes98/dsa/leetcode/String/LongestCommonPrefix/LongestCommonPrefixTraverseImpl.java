@@ -21,4 +21,9 @@ public class LongestCommonPrefixTraverseImpl implements LongestCommonPrefix {
 
         return prefix;
     }
+
+    @Override
+    public String toString() {
+        return "LongestCommonPrefixTraverseImpl";
+    }
 }
