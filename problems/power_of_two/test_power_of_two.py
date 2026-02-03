@@ -1,15 +1,10 @@
-from problems.power_of_two.solution import Solution
+from problems.power_of_two.solution_rec import isPowerOfTwo as is_power_of_two_rec
+from problems.power_of_two.solution_bitman import isPowerOfTwo as is_power_of_two_bitman
 from test_utils.base_in_out_test import BaseInOutTestCase
 
 
 class TestPowerOfTwo(BaseInOutTestCase):
-    @staticmethod
-    def function_wrapper(n):
-        """Wrapper function that takes an integer and returns if it's a power of two"""
-        solution = Solution()
-        return solution.isPowerOfTwo(n)
-
-    function_under_test = [function_wrapper]
+    function_under_test = [is_power_of_two_rec, is_power_of_two_bitman]
 
     test_cases = [
         ("one is power of two", (1,), True),
