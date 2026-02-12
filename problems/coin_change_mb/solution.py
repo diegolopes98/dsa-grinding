@@ -13,12 +13,11 @@ def change(amount: int, coins: List[int]) -> Dict[int, int]:
 
     for change in range(1, amount + 1):
         for coin in coins:
-            if change - coin >= 0:
-                if cache[change][0] > cache[change - coin][0] + 1:
-                    cache[change] = (
-                        cache[change - coin][0] + 1,
-                        merge_dict(cache[change - coin][1], {coin: 1}),
-                    )
+            if change - coin >= 0 and cache[change][0] > cache[change - coin][0] + 1:
+                cache[change] = (
+                    cache[change - coin][0] + 1,
+                    merge_dict(cache[change - coin][1], {coin: 1}),
+                )
 
     return cache[amount][1] if cache[amount][0] != amount + 1 else {}
 
